@@ -56,7 +56,7 @@ int main()
 
     if(m==n)
     {
-      printf("\nMatrix Multiplication"\n);
+      printf("\nMatrix Multiplication\n");
       for(i=0;i<m;i++)
       {
       for(j=0;j<n;j++)
@@ -69,3 +69,4 @@ int main()
       printf("\nMatrix multiplication not possible (not square matrices).\n");
       }
 return 0;
+}
