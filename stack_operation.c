@@ -1,93 +1,66 @@
 #include<stdio.h>
+#define MAX 5
+int stack[MAX];
+int top=-1;
+void push(int value){
+if (top==MAX-1){
+printf("Stack Overflow!Cannot Push%d\n",value);
+}
+else{
+stack[++top]=value;
+printf("%d pushed to stack\n",value);
+}
+}
+
+void pop(){
+if(top==-1){
+printf("Stack Underflow!Cannot Pop\n");
+}
+else{
+printf("%d popped from stack\n",stack[top--]);
+}
+}
+
+void display() {
+if (top==-1){
+printf("stack is empty\n");
+}
+else{
+printf("stack elements:\n");
+for(int i=top;i>=0;i--){
+printf("%d\n",stack[i]);
+}
+printf("\n");
+}
+}
 int main()
 {
-int m,n,i,j,k;
-printf("Enter the number of rows and columns of the matrices:");
-scanf("%d%d",&m,&n);
-int A[m][n],B[m][n],Sum[m][n],Sub[m][n],Mul[m][n];
+int choice,value;
+while(1){
+printf("\n---Stack Menu---\n");
+printf("\n1.Push\n 2.Pop\n 3.Display\n 4.Exit\n");
+printf("Enter your choice:");
+scanf("%d",&choice);
 
-printf("Enter the elements of matrix A");
-for(i=0;i<n;i++)
-{
-for(j=0;j<n;j++)
-{
-scanf("%d",&A[i][j]);
-}
-}
+switch(choice){
+case 1:
+printf("Enter value to push:");
+scanf("%d",&value);
+push(value);
+break;
 
-printf("Enter elements of matrix B");
-for(i=0;i<n;i++)
-{
-for(j=0;j<n;j++)
-{
-scanf("%d",&B[i][j]);
-}
-}
+case 2:
+pop();
+break;
 
-for(i=0;i<m;i++)
-{
-for(j=0;j<n;j++)
-{
-Sum[i][j]=A[i][j]+B[i][j];
-}
-}
+case 3:
+display();
+break;
 
-for(i=0;i<m;i++)
-{
-for(j=0;j<n;j++)
-{
-Sub[i][j]=A[i][j]-B[i][j];
-}
-}
-
-if(m==n)
-{
-for(i=0;i<m;i++)
-{
-
-for(j=0;j<n;j++)
-{
-Mul[i][j]=0;
-for(k=0;k<n;k++)
-{
-Mul[i][j]=A[i][j]*B[i][j];
-}
-}
-}
-}
-printf("\nMatrix Addition:\n");
-for(i=0;i<m;i++)
-{
-for(j=0;j<n;j++)
-{
-printf("%d",Sum[i][j]);
-printf("\n");
-}
-}
-printf("\nMatrix Subtraction:\n");
-for(i=0;i<m;i++)
-{
-for(j=0;j<n;j++)
-{
-printf("%d",Sub[i][j]);
-printf("\n");
-}
-}
-if(m==n)
-{
-printf("\nMatrix Multiplication:\n");
-for(i=0;i<m;i++)
-{
-for(j=0;j<n;j++)
-{
-printf("%d",Mul[i][j]);
-printf("\n");
-}
-}
-}
-else
-{
-printf("\nMatrix multiplicationj is not possible\n");
-}
+case 4:
 return 0;
+default:
+printf("Invalid choice try again.\n");
+}
+}
 }
